@@ -23,6 +23,7 @@ const cats = [
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIyGk9Ds3bdd4B404EcoMDrVUKnU5u9KABOg&usqp=CAU',
 ];
 
+// ===============================================================
 // console.log(_.throttle);
 
 // const input = document.querySelector(".js-input");
@@ -51,11 +52,18 @@ const cats = [
 //   }
 // }
 
+// ====================================================
 // const list = document.querySelector('.js-list');
-// const markup = cats.map(cat => `<li><img src="${cat}" loading="lazy" alt="cat" width="600"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus dolorum possimus blanditiis fuga harum, aut error vero fugit quas iure et reprehenderit perspiciatis Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus dolorum possimus blanditiis fuga harum, aut error vero fugit quas iure et reprehenderit perspiciatis</p></li>`).join('');
+// const markup = cats
+//   .map(
+//     cat =>
+//       `<li><img src="${cat}" loading="lazy" alt="cat" width="600" height="400"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus dolorum possimus blanditiis fuga harum, aut error vero fugit quas iure et reprehenderit perspiciatis Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus dolorum possimus blanditiis fuga harum, aut error vero fugit quas iure et reprehenderit perspiciatis</p></li>`,
+//   )
+//   .join('');
 
 // list.insertAdjacentHTML('beforeend', markup);
 
+// ====================================================
 // ПЕРЕРВА ДО 21.20
 
 // Створити функцію яка приймає 1 параметр масив продуктів і повертає мутований масив
@@ -65,65 +73,90 @@ const cats = [
 
 // const products = [
 //   {
-//     id: "sku1",
+//     id: 'sku1',
 //     qty: 1,
 //   },
 //   {
-//     id: "sku2",
+//     id: 'sku2',
 //     qty: 2,
 //   },
 //   {
-//     id: "sku3",
+//     id: 'sku3',
 //     qty: 3,
 //   },
 //   {
-//     id: "sku1",
+//     id: 'sku3',
 //     qty: 6,
 //   },
 //   {
-//     id: "sku1",
+//     id: 'sku4',
 //     qty: 8,
 //   },
 //   {
-//     id: "sku1",
+//     id: 'sku3',
 //     qty: 6,
 //   },
 //   {
-//     id: "sku1",
+//     id: 'sku4',
 //     qty: 6,
 //   },
 //   {
-//     id: "sku1",
+//     id: 'sku1',
 //     qty: 6,
 //   },
 //   {
-//     id: "sku2",
+//     id: 'sku2',
 //     qty: 19,
 //   },
 //   {
-//     id: "sku4",
+//     id: 'sku4',
 //     qty: 1,
 //   },
 //   {
-//     id: "sku1",
+//     id: 'sku1',
 //     qty: 8,
 //   },
 // ];
 
-// function sortProduct(arr) {
-//   for (let i = 0; i < arr.length; i += 1) {
-//     for (let j = i + 1; j < arr.length; j += 1) {
-//       if (arr[i].id === arr[j].id) {
-//         arr[i].qty += arr[j].qty;
-//         arr.splice(j, 1);
-//         j-=1;
+// function mergeProducts(products) {
+//   for (let i = 0; i < products.length; i += 1) {
+//     for (let j = i + 1; j < products.length; j += 1) {
+//       if (products[i].id === products[j].id) {
+//         products[i].qty += products[j].qty;
+//         products.splice(j, 1);
+//         j -= 1;
 //       }
 //     }
 //   }
-// };
+// }
 
-// sortProduct(products);
+// function mergeProducts(products) {
+//   // Створюємо об'єкт для зберігання сумарних значень кількості за id
+//   const productMap = {};
+
+//   // Проходимо по всіх елементах масиву
+//   products.forEach(product => {
+//     const { id, qty } = product;
+
+//     if (!productMap[id]) {
+//       // Зберігаємо продукт у мапі, якщо його ще немає
+//       productMap[id] = product;
+//     } else {
+//       // Якщо id вже існує в мапі, додаємо кількість
+//       productMap[id].qty += qty;
+//     }
+
+//     console.log(productMap);
+//   });
+
+//   // Очищаємо початковий масив і додаємо тільки унікальні продукти з об'єднаною кількістю
+//   products.length = 0;
+//   products.push(...Object.values(productMap));
+// }
+
+// mergeProducts(products);
 // console.log(products);
+
 // const products = [{
 //     id: 'sku1',
 //     qty: 15,
@@ -138,6 +171,7 @@ const cats = [
 //     qty: 1,
 // }]
 
+// =========================================================
 // У кожному масиві, а є унікальний рядок, у якому не повторюються літери. Знайдіть і виведіть цей рядок
 // function findUniq(arr) {
 // ["abc", "acb", "bac", "foo", "bca", "cab", "cba"]
@@ -182,10 +216,16 @@ const cats = [
 // console.log(uniqueString); // "foo"
 // }
 
-const findUniq = arr =>
-  arr.find((current, i) =>
-    current.split('').every(item => arr.every((comparison, j) => (i !== j ? !comparison.includes(item) : true))),
-  );
+// const findUniq = arr =>
+//   arr.find((current, i) =>
+//     current.split('').every(item => arr.every((comparison, j) => (i !== j ? !comparison.includes(item) : true))),
+//   );
+
+function findUniq(arr) {
+  arr.forEach(item => {
+    const letters = item.split('');
+  });
+}
 
 console.log(findUniq(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba'])); // === 'foo'
 console.log(findUniq(['fghj', 'ghfj', 'abcd', 'jhgf', 'fghj', 'fgjh', 'ghjf'])); // === 'abcd'
